@@ -1,8 +1,7 @@
 import os
 from extraction import extract_text_from_pdf, extract_text_from_docx
 from splitting import split_into_levels
-from embeddings import create_multilevel_embeddings
-from retrieval import build_indices_cosine
+from embeddings import create_multilevel_embeddings, build_indices_cosine
 
 def get_multiple_documents():
     """Get paths for multiple document files"""

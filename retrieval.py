@@ -1,24 +1,6 @@
 import faiss
 import numpy as np
 
-def build_indices_cosine(embeddings_dict):
-    """Build FAISS indices using cosine similarity"""
-    indices = {}
-
-    for level, embeds in embeddings_dict.items():
-        embed_array = np.array(embeds).astype('float32')
-        faiss.normalize_L2(embed_array)
-
-        dimension = embed_array.shape[1]
-        index = faiss.IndexFlatIP(dimension)
-
-        index.add(embed_array)
-        indices[level] = index
-
-        print(f"Built cosine similarity index for {level} level with {index.ntotal} vectors")
-
-    return indices
-
 def progressive_search_cosine(query, indices, embeddings_dict, text_levels, model, top_k=3):
     """
     Search through embeddings at multiple levels with progressive filtering using cosine similarity
