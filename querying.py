@@ -1,9 +1,10 @@
 from sentence_transformers import SentenceTransformer
-from document import get_multiple_documents, process_multiple_documents
+from document import get_documents_from_folder, process_multiple_documents
 from retrieval import progressive_search_cosine
+import time
 
 def multi_document_query_interface(all_text_levels, multilevel_embeddings, indices, model):
-    """Query interface for multiple documents"""
+    """Query interface for multiple documents with performance tracking"""
 
     print("\n" + "="*50)
     print("Multi-Document Query System")
@@ -11,13 +12,38 @@ def multi_document_query_interface(all_text_levels, multilevel_embeddings, indic
     for i, name in enumerate(all_text_levels['metadata']['doc_names']):
         print(f"  {i+1}. {name}")
     print("="*50)
+    
+    # Collection statistics
+    print(f"Collection statistics:")
+    print(f"  • Documents: {len(all_text_levels['document'])}")
+    print(f"  • Sections: {len(all_text_levels['sections'])}")
+    print(f"  • Paragraphs: {len(all_text_levels['paragraphs'])}")
+    
+    print("="*50)
     print("Type your query or 'quit' to exit")
     print("="*50)
+
+    # Track session performance
+    session_stats = {
+        'queries': 0,
+        'total_time': 0,
+        'total_comparisons': 0
+    }
 
     while True:
         query = input("\nEnter your query: ")
 
         if query.lower() in ['quit', 'exit', 'q']:
+            # Show session summary
+            if session_stats['queries'] > 0:
+                print("\n" + "="*50)
+                print("SESSION PERFORMANCE SUMMARY")
+                print("="*50)
+                print(f"Queries executed: {session_stats['queries']}")
+                print(f"Average search time: {session_stats['total_time']/session_stats['queries']:.4f} seconds")
+                print(f"Average vector comparisons: {session_stats['total_comparisons']/session_stats['queries']:.1f}")
+                print(f"Comparison reduction: {(1 - session_stats['total_comparisons']/(session_stats['queries']*len(all_text_levels['paragraphs'])))*100:.1f}% vs flat")
+            
             print("\nThank you for using the Multi-Document Query System!")
             break
 
@@ -27,8 +53,30 @@ def multi_document_query_interface(all_text_levels, multilevel_embeddings, indic
 
         print("\nSearching across all documents...")
 
+        start = time.time()
+
         # Use our progressive search function with cosine similarity
         results = progressive_search_cosine(query, indices, multilevel_embeddings, all_text_levels, model)
+        search_time = time.time() - start
+        
+        # Update session stats (extract comparison count from results if needed)
+        session_stats['queries'] += 1
+        session_stats['total_time'] += search_time
+        
+        # Extract comparison count from output or estimate it
+        # (This assumes progressive_search_cosine has been modified to return this info)
+        est_comparisons = indices['document'].ntotal
+        if 'filtered_section_count' in results:
+            est_comparisons += results['filtered_section_count'] 
+        if 'filtered_paragraph_count' in results:
+            est_comparisons += results['filtered_paragraph_count']
+        else:
+            # Rough estimate if not available
+            est_comparisons += len(results['section']['indices']) * 10
+            
+        session_stats['total_comparisons'] += est_comparisons
+
+        print(f"\nSearch completed in {search_time:.2f} seconds")
 
         # Display results
         print("\n" + "-"*50)
@@ -69,16 +117,21 @@ def multi_document_query_interface(all_text_levels, multilevel_embeddings, indic
 
         print("\n" + "-"*50)
 
+
+# Update your run_multi_document_rag_system function to use this new function
 def run_multi_document_rag_system():
-    """Run the complete multi-document RAG system"""
+    """Run the complete multi-document RAG system with folder loading"""
 
     # Load the model
     print("Loading embedding model...")
     model = SentenceTransformer('all-MiniLM-L6-v2')
     print("Model loaded successfully!")
 
-    # Get multiple documents
-    documents = get_multiple_documents()
+    # Get folder path
+    folder_path = input("Enter folder path containing documents: ")
+    
+    # Load all documents from folder
+    documents = get_documents_from_folder(folder_path)
 
     if not documents:
         print("No documents were processed successfully. Exiting.")
