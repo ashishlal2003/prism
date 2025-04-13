@@ -8,6 +8,69 @@ from tqdm import tqdm
 from typing import List, Dict, Any
 from logs import append_to_json_file
 
+# Global variables for model and embeddings
+MODEL = None
+EMBEDDINGS = None
+CHUNKS = None
+
+def initialize_model_and_embeddings(directory_path: str):
+    """Initialize the SentenceTransformer model and precompute document embeddings."""
+    global MODEL, EMBEDDINGS, CHUNKS
+
+    print(f"\n{'='*50}")
+    print(f"INITIALIZATION PROCESS")
+    print(f"{'='*50}")
+
+    # Load documents
+    documents = load_documents_from_directory(directory_path)
+    if not documents:
+        print("No documents found. Exiting initialization.")
+        return False
+
+    # Chunk documents
+    CHUNKS = chunk_documents(documents)
+
+    # Initialize embedding model
+    print(f"\n{'='*50}")
+    print(f"MODEL INITIALIZATION")
+    print(f"{'='*50}")
+    model_start = time.time()
+    print(f"Loading SentenceTransformer model 'all-MiniLM-L6-v2'...")
+    MODEL = SentenceTransformer('all-MiniLM-L6-v2')
+    model_time = time.time() - model_start
+    print(f"✓ Model loaded in {model_time:.3f}s")
+
+    # Generate embeddings
+    print(f"\n{'='*50}")
+    print(f"EMBEDDING GENERATION")
+    print(f"{'='*50}")
+    embedding_start = time.time()
+    print(f"Generating embeddings for {len(CHUNKS)} chunks...")
+
+    batch_size = 32
+    all_embeddings = []
+
+    for i in range(0, len(CHUNKS), batch_size):
+        batch = CHUNKS[i:i+batch_size]
+        batch_texts = [chunk['text'] for chunk in batch]
+        batch_embeddings = MODEL.encode(batch_texts)
+        all_embeddings.extend(batch_embeddings)
+
+        # Print progress
+        progress = min(i+batch_size, len(CHUNKS))
+        print(f"  Progress: {progress}/{len(CHUNKS)} ({progress/len(CHUNKS)*100:.1f}%)")
+
+    embedding_time = time.time() - embedding_start
+    embed_per_sec = len(CHUNKS) / embedding_time if embedding_time > 0 else 0
+    print(f"\n✓ Generated {len(all_embeddings)} embeddings in {embedding_time:.3f}s")
+    print(f"  Embedding speed: {embed_per_sec:.1f} embeddings/sec")
+
+    EMBEDDINGS = np.array(all_embeddings).astype('float32')
+    print(f"  Embedding dimensions: {EMBEDDINGS[0].shape}")
+    print(f"  Total embedding size: {EMBEDDINGS.nbytes / (1024 * 1024):.2f} MB")
+
+    return True
+
 def load_documents_from_directory(directory_path: str) -> List[Dict]:
     """Load all documents from a directory with detailed logging"""
     print(f"\n{'='*50}")
@@ -101,6 +164,7 @@ def load_documents_from_directory(directory_path: str) -> List[Dict]:
     
     return documents
 
+
 def chunk_documents(documents: List[Dict], chunk_size: int = 1000) -> List[Dict]:
     """Split documents into chunks with detailed logging"""
     print(f"\n{'='*50}")
@@ -144,167 +208,73 @@ def chunk_documents(documents: List[Dict], chunk_size: int = 1000) -> List[Dict]
     
     return chunks
 
-def traditional_faiss_search(directory_path: str, query: str, data : dict, top_k: int = 5):
-    """Traditional flat FAISS approach for document retrieval with detailed logging"""
-    overall_start = time.time()
-    print(f"\n{'='*50}")
-    print(f"TRADITIONAL RAG APPROACH")
-    print(f"{'='*50}")
-    print(f"Query: '{query}'")
-    
-    # Load documents
-    documents = load_documents_from_directory(directory_path)
-    if not documents:
-        return [], {"error": "No documents loaded"}
-    
-    # Chunk documents
-    chunks = chunk_documents(documents)
-    
-    # Initialize embedding model
-    print(f"\n{'='*50}")
-    print(f"MODEL INITIALIZATION")
-    print(f"{'='*50}")
-    model_start = time.time()
-    print(f"Loading SentenceTransformer model 'all-MiniLM-L6-v2'...")
-    model = SentenceTransformer('all-MiniLM-L6-v2')
-    model_time = time.time() - model_start
-    print(f"✓ Model loaded in {model_time:.3f}s")
-    
-    # Generate embeddings
-    print(f"\n{'='*50}")
-    print(f"EMBEDDING GENERATION")
-    print(f"{'='*50}")
-    embedding_start = time.time()
-    print(f"Generating embeddings for {len(chunks)} chunks...")
-    
-   
-    
-    # Generate embeddings with progress display
-    batch_size = 32
-    all_embeddings = []
-    
-    for i in range(0, len(chunks), batch_size):
-        batch = chunks[i:i+batch_size]
-        batch_texts = [chunk['text'] for chunk in batch]
-        batch_embeddings = model.encode(batch_texts)
-        all_embeddings.extend(batch_embeddings)
-        
-        # Print progress
-        progress = min(i+batch_size, len(chunks))
-        print(f"  Progress: {progress}/{len(chunks)} ({progress/len(chunks)*100:.1f}%)")
-    
-    embedding_time = time.time() - embedding_start
-    embed_per_sec = len(chunks) / embedding_time if embedding_time > 0 else 0
-    print(f"\n✓ Generated {len(all_embeddings)} embeddings in {embedding_time:.3f}s")
-    print(f"  Embedding speed: {embed_per_sec:.1f} embeddings/sec")
-    
-    if all_embeddings:
-        print(f"  Embedding dimensions: {all_embeddings[0].shape}")
-        embedding_bytes = sum(e.nbytes for e in all_embeddings)
-        print(f"  Total embedding size: {embedding_bytes/(1024*1024):.2f} MB")
-    
-  
-    # Build FAISS index
-    print(f"\n{'='*50}")
-    print(f"INDEX CONSTRUCTION")
-    print(f"{'='*50}")
-    index_start = time.time()
-    
-    print(f"Converting embeddings to FAISS-compatible array...")
-    embeddings_array = np.array(all_embeddings).astype('float32')
-    print(f"  Array shape: {embeddings_array.shape}, dtype: {embeddings_array.dtype}")
-    print(f"  Memory: {embeddings_array.nbytes / (1024*1024):.2f} MB")
-    
-    print("Normalizing embeddings for cosine similarity...")
-    norm_start = time.time()
-    faiss.normalize_L2(embeddings_array)
-    norm_time = time.time() - norm_start
-    print(f"✓ Normalization complete in {norm_time:.3f}s")
-    
-    dimension = embeddings_array.shape[1]
-    print(f"Creating FAISS IndexFlatIP with {dimension} dimensions...")
-    index = faiss.IndexFlatIP(dimension)
-    
-    add_start = time.time()
-    print(f"Adding {len(embeddings_array)} vectors to index...")
-    index.add(embeddings_array)
-    add_time = time.time() - add_start
-    print(f"✓ Added vectors in {add_time:.3f}s")
-    
-    index_time = time.time() - index_start
-    print(f"\n✓ Built FAISS index in {index_time:.3f}s")
-    print(f"  Index contains {index.ntotal} vectors with {dimension} dimensions")
-    
-    # Search
+def traditional_faiss_search(query: str, top_k: int = 5):
+    """Perform FAISS search using precomputed embeddings."""
+    global MODEL, EMBEDDINGS, CHUNKS
+
+    if MODEL is None or EMBEDDINGS is None or CHUNKS is None:
+        print("Error: Model and embeddings are not initialized. Please initialize first.")
+        return [], {"error": "Model and embeddings not initialized"}
+
     print(f"\n{'='*50}")
     print(f"SEARCH EXECUTION")
     print(f"{'='*50}")
     search_start = time.time()
-    
+
+    # Normalize embeddings for cosine similarity
+    print("Normalizing embeddings for cosine similarity...")
+    norm_start = time.time()
+    faiss.normalize_L2(EMBEDDINGS)
+    norm_time = time.time() - norm_start
+    print(f"✓ Normalization complete in {norm_time:.3f}s")
+
+    # Build FAISS index
+    print(f"Creating FAISS IndexFlatIP with {EMBEDDINGS.shape[1]} dimensions...")
+    index = faiss.IndexFlatIP(EMBEDDINGS.shape[1])
+
+    add_start = time.time()
+    print(f"Adding {len(EMBEDDINGS)} vectors to index...")
+    index.add(EMBEDDINGS)
+    add_time = time.time() - add_start
+    print(f"✓ Added vectors in {add_time:.3f}s")
+
     # Embed query
     print(f"Embedding query: '{query}'")
-    query_embedding = model.encode([query])[0].astype('float32').reshape(1, -1)
+    query_embedding = MODEL.encode([query])[0].astype('float32').reshape(1, -1)
     print(f"Query embedding shape: {query_embedding.shape}")
-    
+
     print("Normalizing query vector...")
     faiss.normalize_L2(query_embedding)
-    
-    print(f"Searching against ALL {len(chunks)} vectors in corpus...")
+
+    print(f"Searching against ALL {len(CHUNKS)} vectors in corpus...")
     actual_search_start = time.time()
-    D, I = index.search(query_embedding, min(top_k, len(chunks)))
+    D, I = index.search(query_embedding, min(top_k, len(CHUNKS)))
     actual_search_time = time.time() - actual_search_start
     print(f"✓ Vector search completed in {actual_search_time*1000:.2f} ms")
-    
+
     # Get results
     print("\nAssembling results...")
     results = []
     for i, idx in enumerate(I[0]):
-        if idx < len(chunks):
+        if idx < len(CHUNKS):
             results.append({
-                'document_id': chunks[idx]['document_id'],
-                'chunk_id': chunks[idx]['id'],
-                'text': chunks[idx]['text'],
+                'document_id': CHUNKS[idx]['document_id'],
+                'chunk_id': CHUNKS[idx]['id'],
+                'text': CHUNKS[idx]['text'],
                 'similarity': float(D[0][i])
             })
-            print(f"  Result {i+1}: {chunks[idx]['document_id']} (Score: {D[0][i]:.4f})")
-    
+            print(f"  Result {i+1}: {CHUNKS[idx]['document_id']} (Score: {D[0][i]:.4f})")
+
     search_time = time.time() - search_start
     print(f"\n✓ Search process completed in {search_time:.3f}s")
     print(f"  Found {len(results)} results")
-    
-    # Performance summary
-    total_time = time.time() - overall_start
-    print(f"\n{'='*50}")
-    print(f"PERFORMANCE SUMMARY - TRADITIONAL APPROACH")
-    print(f"{'='*50}")
-    print(f"Total processing time: {total_time:.3f}s")
-    print(f"  - Document loading: {model_start - overall_start:.3f}s ({(model_start - overall_start)/total_time*100:.1f}%)")
-    print(f"  - Model loading: {model_time:.3f}s ({model_time/total_time*100:.1f}%)")
-    print(f"  - Embedding generation: {embedding_time:.3f}s ({embedding_time/total_time*100:.1f}%)")
-    print(f"  - Index building: {index_time:.3f}s ({index_time/total_time*100:.1f}%)")
-    print(f"  - Search execution: {search_time:.3f}s ({search_time/total_time*100:.1f}%)")
-    print(f"    - Actual vector search: {actual_search_time:.6f}s")
-    print(f"Vector comparisons: {len(chunks)} (100% of corpus)")
-    print(f"Documents: {len(documents)}, Chunks: {len(chunks)}")
-    
-    data["Total processing time"] = f"{total_time:.3f}s"
-    data["Document loading"] = f"{model_start - overall_start:.3f}s ({(model_start - overall_start)/total_time*100:.1f}%)"
-    data["Embedding generation"] = f"{embedding_time:.3f}s ({embedding_time/total_time*100:.1f}%)"
-    data["Index building"] = f"{index_time:.3f}s ({index_time/total_time*100:.1f}%)"
-    data["Search execution"] = f"{search_time:.3f}s ({search_time/total_time*100:.1f}%)"
-    data["Actual vector search"] = f"{actual_search_time:.6f}s"
-    data["Vector comparisons"] = f"{len(chunks)} (100% of corpus)"
-    data["Documents"] = f"{len(documents)}, Chunks: {len(chunks)}"
-
-
 
     return results, {
-        'total_time': total_time,
         'search_time': search_time,
         'actual_search_time': actual_search_time,
-        'embedding_time': embedding_time,
-        'vector_comparisons': len(chunks)
+        'vector_comparisons': len(CHUNKS)
     }
+
 
 if __name__ == "__main__":
     print(f"\n{'='*70}")
@@ -313,20 +283,28 @@ if __name__ == "__main__":
 
     data = {}
     file_path = "rag_data.json"
-    
+
     docs_dir = input("Enter documents directory path: ")
-    query = input("Enter search query: ")
-    
-    start_time = time.time()
-    results, metrics = traditional_faiss_search(docs_dir, query, data)
-    overall_time = time.time()-start_time
-    print(f"\n{'='*50}")
-    print(f"SEARCH RESULTS")
-    print(f"{'='*50}")
-    for i, result in enumerate(results):
-        print(f"{i+1}. [{result['document_id']}] (Score: {result['similarity']:.4f})")
-        print(f"   {result['text']}\n")
-    
-    print("Total Time : ", overall_time)
-    data["OverAll Time : "] = overall_time
-    append_to_json_file(data, file_path)
+
+    # Initialize model and embeddings
+    if initialize_model_and_embeddings(docs_dir):
+        while True:
+            query = input("\nEnter search query (or type 'exit' to quit): ")
+            if query.lower() == 'exit':
+                break
+            
+            data["Query"] = query
+            start_time = time.time()
+            results, metrics = traditional_faiss_search(query)
+            overall_time = time.time() - start_time
+
+            print(f"\n{'='*50}")
+            print(f"SEARCH RESULTS")
+            print(f"{'='*50}")
+            for i, result in enumerate(results):
+                print(f"{i+1}. [{result['document_id']}] (Score: {result['similarity']:.4f})")
+                print(f"   {result['text']}\n")
+
+            print("Total Time : ", overall_time)
+            data["OverAll Time : "] = overall_time
+            append_to_json_file(data, file_path)

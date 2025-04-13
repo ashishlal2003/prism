@@ -2,7 +2,7 @@ import time
 import faiss
 import numpy as np
 
-def progressive_search_cosine(query, indices, embeddings_dict, text_levels, model, top_k=3):
+def progressive_search_cosine(query, indices, embeddings_dict, text_levels, model, data, top_k=3):
     """
     Search through embeddings at multiple levels with progressive filtering using cosine similarity
     """
@@ -32,7 +32,8 @@ def progressive_search_cosine(query, indices, embeddings_dict, text_levels, mode
     
     D, I = indices['document'].search(query_embedding, k=min(top_k, indices['document'].ntotal))
     doc_search_time = time.time() - doc_search_start
-    
+    data["Document Search Time"] = doc_search_time
+
     results['document'] = {
         'indices': I[0].tolist(),
         'similarities': D[0].tolist(),
@@ -84,6 +85,8 @@ def progressive_search_cosine(query, indices, embeddings_dict, text_levels, mode
     }
     
     section_search_time = time.time() - section_search_start
+    data["Section Search Time"] = section_search_time
+
     print(f"\n✓ Section search complete in {section_search_time:.6f}s")
     print(f"  Selected {len(results['section']['indices'])} sections")
     for i, (idx, sim) in enumerate(zip(results['section']['indices'], results['section']['similarities'])):
@@ -131,6 +134,8 @@ def progressive_search_cosine(query, indices, embeddings_dict, text_levels, mode
     }
     
     para_search_time = time.time() - para_search_start
+    data["Paragraph Search Time"] = para_search_time
+
     print(f"\n✓ Paragraph search complete in {para_search_time:.6f}s")
     print(f"  Selected {len(results['paragraph']['indices'])} paragraphs")
     for i, (idx, sim) in enumerate(zip(results['paragraph']['indices'], results['paragraph']['similarities'])):
