@@ -208,7 +208,7 @@ def chunk_documents(documents: List[Dict], chunk_size: int = 1000) -> List[Dict]
     
     return chunks
 
-def traditional_faiss_search(query: str, top_k: int = 5):
+def traditional_faiss_search(query: str, top_k: int = 3):
     """Perform FAISS search using precomputed embeddings."""
     global MODEL, EMBEDDINGS, CHUNKS
 
@@ -302,8 +302,11 @@ if __name__ == "__main__":
             print(f"SEARCH RESULTS")
             print(f"{'='*50}")
             for i, result in enumerate(results):
-                print(f"{i+1}. [{result['document_id']}] (Score: {result['similarity']:.4f})")
+                j = i+1
+                print(f"{j}. [{result['document_id']}] (Score: {result['similarity']:.4f})")
                 print(f"   {result['text']}\n")
+                data[f"{j} Document"] = f"[{result['document_id']}] (Score: {result['similarity']:.4f})"
+                data[f"{j} Document Text"] = result['text']
 
             print("Total Time : ", overall_time)
             data["OverAll Time : "] = overall_time

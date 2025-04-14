@@ -54,20 +54,6 @@ def multi_document_query_interface(
                     f"Comparison reduction: {(1 - session_stats['total_comparisons']/(session_stats['queries']*len(all_text_levels['paragraphs'])))*100:.1f}% vs flat"
                 )
 
-                # logging
-                data["Queries executed"] = session_stats["queries"]
-                data["Average search time"] = (
-                    session_stats["total_time"] / session_stats["queries"]
-                )
-                data["Average vector comparisons"] = (
-                    session_stats["total_comparisons"] / session_stats["queries"]
-                )
-                data["Comparison reduction"] = (
-                    1
-                    - session_stats["total_comparisons"]
-                    / (session_stats["queries"] * len(all_text_levels["paragraphs"]))
-                ) * 100
-
             print("\nThank you for using the Multi-Document Query System!")
             break
 
@@ -84,7 +70,6 @@ def multi_document_query_interface(
             query, indices, multilevel_embeddings, all_text_levels, model, data
         )
         search_time = time.time() - start
-        data["Search Time"] = search_time
 
         # Update session stats (extract comparison count from results if needed)
         session_stats["queries"] += 1
@@ -153,9 +138,7 @@ def multi_document_query_interface(
             data[f"Paragraph {i+1} Text"] = paragraph_text
 
             print(paragraph_text)
-        
-        duration = time.time() - start
-        data["Total Duration"] = duration
+
         print("\n" + "-" * 50)
     
         print("calling append function")

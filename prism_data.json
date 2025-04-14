@@ -1,10 +1,10 @@
 [
     {
         "query": "What are the primary differences in economic development between rural and urban areas in India, and how do government initiatives aim to bridge this gap?",
-        "Document Search Time": 0.019879817962646484,
-        "Section Search Time": 0.0,
-        "Paragraph Search Time": 0.006336212158203125,
-        "Search Time": 0.04823470115661621,
+        "Document Search Time": 0.021058320999145508,
+        "Section Search Time": 0.0018208026885986328,
+        "Paragraph Search Time": 0.00127410888671875,
+        "Total Retrieval Time": 0.02415323257446289,
         "Document 1": "Rural vs Urban Economic Development in India.docx (Similarity: 0.8156)",
         "Document 2": "Impact of GST on Indian Businesses.docx (Similarity: 0.3561)",
         "Document 3": "sample_markdown_style - 3.docx (Similarity: 0.2731)",
@@ -19,15 +19,14 @@
         "Paragraph 2": "Rural vs Urban Economic Development in India.docx (Similarity: 0.7583)",
         "Paragraph 2 Text": "#Rural India comprises villages and small towns where agriculture is the predominant occupation. The rural economy is largely agrarian, supported by allied sectors such as animal husbandry, forestry, and handicrafts. Infrastructure, healthcare, and education facilities are generally less developed in rural areas compared to urban counterparts.",
         "Paragraph 3": "Rural vs Urban Economic Development in India.docx (Similarity: 0.7524)",
-        "Paragraph 3 Text": "#This document explores the economic development in both rural and urban regions of India, highlights disparities, and discusses the measures needed to bridge the developmental divide for a more inclusive and equitable future.",
-        "Total Duration": 0.05250859260559082
+        "Paragraph 3 Text": "#This document explores the economic development in both rural and urban regions of India, highlights disparities, and discusses the measures needed to bridge the developmental divide for a more inclusive and equitable future."
     },
     {
         "query": "How did the COVID-19 pandemic contribute to global inflation, and what were the sector-specific impacts of this inflationary trend?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.0025658607482910156,
-        "Paragraph Search Time": 0.00405120849609375,
-        "Search Time": 0.029348134994506836,
+        "Section Search Time": 0.0020112991333007812,
+        "Paragraph Search Time": 0.0,
+        "Total Retrieval Time": 0.0020112991333007812,
         "Document 1": "Global Impact of Inflation Post-COVID-19.docx (Similarity: 0.7907)",
         "Document 2": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.2943)",
         "Document 3": "Impact of GST on Indian Businesses.docx (Similarity: 0.1886)",
@@ -42,15 +41,14 @@
         "Paragraph 2": "Global Impact of Inflation Post-COVID-19.docx (Similarity: 0.8418)",
         "Paragraph 2 Text": "#The global impact of inflation post-COVID-19 is a complex and multifaceted phenomenon. While the pandemic may have subsided, its economic aftershocks continue to be felt across the world. Understanding the root causes, consequences, and strategies to manage inflation is critical to building a more resilient and equitable global economy.",
         "Paragraph 3": "Global Impact of Inflation Post-COVID-19.docx (Similarity: 0.8212)",
-        "Paragraph 3 Text": "#Global Trends in Inflation Post-COVID",
-        "Total Duration": 0.03535127639770508
+        "Paragraph 3 Text": "#Global Trends in Inflation Post-COVID"
     },
     {
         "query": "What are the advantages and challenges of implementing the Goods and Services Tax (GST) for small and medium enterprises (SMEs) in India?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.0015726089477539062,
-        "Paragraph Search Time": 0.0,
-        "Search Time": 0.03352069854736328,
+        "Section Search Time": 0.0,
+        "Paragraph Search Time": 0.0020093917846679688,
+        "Total Retrieval Time": 0.0020093917846679688,
         "Document 1": "Impact of GST on Indian Businesses.docx (Similarity: 0.8099)",
         "Document 2": "Rural vs Urban Economic Development in India.docx (Similarity: 0.3417)",
         "Document 3": "sample_markdown_style - 3.docx (Similarity: 0.2103)",
@@ -65,15 +63,14 @@
         "Paragraph 2": "Impact of GST on Indian Businesses.docx (Similarity: 0.7870)",
         "Paragraph 2 Text": "#The Goods and Services Tax (GST), implemented in India on July 1, 2017, marked a historic step toward simplifying the country\u2019s complex indirect tax system. It replaced multiple cascading taxes levied by the central and state governments, integrating the Indian market into a single economic entity. While GST has introduced many efficiencies, its impact on Indian businesses has been both transformative and challenging.",
         "Paragraph 3": "Impact of GST on Indian Businesses.docx (Similarity: 0.7661)",
-        "Paragraph 3 Text": "#One of the primary aims of GST was to improve the ease of doing business in India. Before GST, businesses had to navigate a web of indirect taxes like VAT, excise duty, and service tax.",
-        "Total Duration": 0.040120840072631836
+        "Paragraph 3 Text": "#One of the primary aims of GST was to improve the ease of doing business in India. Before GST, businesses had to navigate a web of indirect taxes like VAT, excise duty, and service tax."
     },
     {
         "query": "How does artificial intelligence (AI) impact job creation and job displacement across different industries, and what role does reskilling play in mitigating its negative effects?",
-        "Document Search Time": 0.0,
-        "Section Search Time": 0.0,
-        "Paragraph Search Time": 0.0,
-        "Search Time": 0.06650590896606445,
+        "Document Search Time": 0.020556926727294922,
+        "Section Search Time": 0.0015175342559814453,
+        "Paragraph Search Time": 0.002046823501586914,
+        "Total Retrieval Time": 0.02412128448486328,
         "Document 1": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.6158)",
         "Document 2": "sample_markdown_style - 2.docx (Similarity: 0.3163)",
         "Document 3": "Rural vs Urban Economic Development in India.docx (Similarity: 0.2464)",
@@ -88,15 +85,14 @@
         "Paragraph 2": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.6573)",
         "Paragraph 2 Text": "#The answer is nuanced and varies across industries, geographies, and skill levels. This document explores the impact of AI and automation on employment, highlighting both the opportunities and the challenges they bring.",
         "Paragraph 3": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.6473)",
-        "Paragraph 3 Text": "#In developed nations, AI may complement human labor, increasing productivity and wages. In developing economies, however, where labor is cheap and skills are often manual, the displacement effect may be more significant.",
-        "Total Duration": 0.06970405578613281
+        "Paragraph 3 Text": "#In developed nations, AI may complement human labor, increasing productivity and wages. In developing economies, however, where labor is cheap and skills are often manual, the displacement effect may be more significant."
     },
     {
         "query": "What are the ethical and legal challenges associated with the integration of AI in healthcare, and how can these challenges be addressed?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.001779317855834961,
-        "Paragraph Search Time": 0.004311323165893555,
-        "Search Time": 0.02868962287902832,
+        "Section Search Time": 0.002026081085205078,
+        "Paragraph Search Time": 0.002767324447631836,
+        "Total Retrieval Time": 0.004793405532836914,
         "Document 1": "sample_markdown_style - 2.docx (Similarity: 0.7749)",
         "Document 2": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.4340)",
         "Document 3": "sample_markdown_style - 3.docx (Similarity: 0.1518)",
@@ -111,15 +107,14 @@
         "Paragraph 2": "sample_markdown_style - 2.docx (Similarity: 0.8746)",
         "Paragraph 2 Text": "- Analyzing the ethical and legal implications of AI in healthcare",
         "Paragraph 3": "sample_markdown_style - 2.docx (Similarity: 0.8160)",
-        "Paragraph 3 Text": "AI has the potential to revolutionize healthcare by improving patient outcomes, optimizing workflows, and reducing costs. However, addressing ethical, technical, and organizational challenges is crucial for its successful integration.",
-        "Total Duration": 0.031432151794433594
+        "Paragraph 3 Text": "AI has the potential to revolutionize healthcare by improving patient outcomes, optimizing workflows, and reducing costs. However, addressing ethical, technical, and organizational challenges is crucial for its successful integration."
     },
     {
         "query": "How has the BRICS alliance influenced global economic and geopolitical dynamics, and what challenges does it face in achieving its objectives?",
         "Document Search Time": 0.0,
         "Section Search Time": 0.0,
-        "Paragraph Search Time": 0.0015363693237304688,
-        "Search Time": 0.06259560585021973,
+        "Paragraph Search Time": 0.0,
+        "Total Retrieval Time": 0.0,
         "Document 1": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.7309)",
         "Document 2": "sample_markdown_style - 4.docx (Similarity: 0.2047)",
         "Document 3": "sample_markdown_style - 5.docx (Similarity: 0.1987)",
@@ -134,15 +129,14 @@
         "Paragraph 2": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.7592)",
         "Paragraph 2 Text": "#The BRICS+ initiative aims to include additional countries from the Global South, such as Argentina, Egypt, Iran, Saudi Arabia, and the UAE. This expansion could enhance BRICS\u2019s global economic footprint and strategic weight.",
         "Paragraph 3": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.7590)",
-        "Paragraph 3 Text": "#BRICS promotes a multipolar world order, pushing back against unilateralism and dominance by the Global North. It supports reforms in global institutions like the UN, IMF, and World Bank to reflect contemporary economic realities.",
-        "Total Duration": 0.07274365425109863
+        "Paragraph 3 Text": "#BRICS promotes a multipolar world order, pushing back against unilateralism and dominance by the Global North. It supports reforms in global institutions like the UN, IMF, and World Bank to reflect contemporary economic realities."
     },
     {
         "query": "What are the latest advancements in renewable energy technologies, and how can they be effectively integrated into existing energy grids?",
-        "Document Search Time": 0.002038717269897461,
-        "Section Search Time": 0.0,
-        "Paragraph Search Time": 0.002012968063354492,
-        "Search Time": 0.02994823455810547,
+        "Document Search Time": 0.0005905628204345703,
+        "Section Search Time": 0.0025310516357421875,
+        "Paragraph Search Time": 0.0026121139526367188,
+        "Total Retrieval Time": 0.0057337284088134766,
         "Document 1": "sample_markdown_style - 3.docx (Similarity: 0.7001)",
         "Document 2": "sample_markdown_style.docx (Similarity: 0.2498)",
         "Document 3": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.2290)",
@@ -157,15 +151,14 @@
         "Paragraph 2": "sample_markdown_style - 3.docx (Similarity: 0.7585)",
         "Paragraph 2 Text": "- Analyzing the latest innovations in renewable energy technologies",
         "Paragraph 3": "sample_markdown_style - 3.docx (Similarity: 0.6871)",
-        "Paragraph 3 Text": "Renewable energy systems are essential for achieving a sustainable future. This study highlights the advancements, challenges, and impacts of renewable energy technologies, emphasizing the need for continued innovation and collaboration. By addressing the barriers to adoption, renewable energy can play a pivotal role in mitigating climate change and ensuring energy security for future generations.",
-        "Total Duration": 0.03406262397766113
+        "Paragraph 3 Text": "Renewable energy systems are essential for achieving a sustainable future. This study highlights the advancements, challenges, and impacts of renewable energy technologies, emphasizing the need for continued innovation and collaboration. By addressing the barriers to adoption, renewable energy can play a pivotal role in mitigating climate change and ensuring energy security for future generations."
     },
     {
         "query": "How do traditional culinary practices evolve in response to globalization, and what strategies can be employed to preserve endangered food traditions?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.0020530223846435547,
-        "Paragraph Search Time": 0.0010941028594970703,
-        "Search Time": 0.03210759162902832,
+        "Section Search Time": 0.0020096302032470703,
+        "Paragraph Search Time": 0.003584146499633789,
+        "Total Retrieval Time": 0.005593776702880859,
         "Document 1": "sample_markdown_style - 5.docx (Similarity: 0.7345)",
         "Document 2": "sample_markdown_style - 4.docx (Similarity: 0.3456)",
         "Document 3": "sample_markdown_style - 3.docx (Similarity: 0.1793)",
@@ -180,15 +173,14 @@
         "Paragraph 2": "sample_markdown_style - 5.docx (Similarity: 0.7769)",
         "Paragraph 2 Text": "- Documenting preservation strategies for endangered culinary traditions",
         "Paragraph 3": "sample_markdown_style - 5.docx (Similarity: 0.7281)",
-        "Paragraph 3 Text": "Traditional culinary emphasis on seasonality and locality often aligns with contemporary sustainability principles while facing challenges in modern contexts.",
-        "Total Duration": 0.03651738166809082
+        "Paragraph 3 Text": "Traditional culinary emphasis on seasonality and locality often aligns with contemporary sustainability principles while facing challenges in modern contexts."
     },
     {
         "query": "What are the most significant threats to marine ecosystems, and how can governance frameworks and technological innovations enhance ocean conservation efforts?",
-        "Document Search Time": 0.0005064010620117188,
-        "Section Search Time": 0.0015938282012939453,
-        "Paragraph Search Time": 0.005242347717285156,
-        "Search Time": 0.0373234748840332,
+        "Document Search Time": 0.0,
+        "Section Search Time": 0.0,
+        "Paragraph Search Time": 0.0015118122100830078,
+        "Total Retrieval Time": 0.0015118122100830078,
         "Document 1": "sample_markdown_style - 4.docx (Similarity: 0.7990)",
         "Document 2": "sample_markdown_style - 3.docx (Similarity: 0.3319)",
         "Document 3": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.2741)",
@@ -203,15 +195,14 @@
         "Paragraph 2": "sample_markdown_style - 4.docx (Similarity: 0.8180)",
         "Paragraph 2 Text": "3. How can governance frameworks and policies be optimized to support ocean conservation?",
         "Paragraph 3": "sample_markdown_style - 4.docx (Similarity: 0.7529)",
-        "Paragraph 3 Text": "1. What are the most significant threats to marine ecosystems, and how are they interconnected?",
-        "Total Duration": 0.041500091552734375
+        "Paragraph 3 Text": "1. What are the most significant threats to marine ecosystems, and how are they interconnected?"
     },
     {
         "query": "How do historical technological shifts compare to the current impact of AI and automation on employment and skill requirements?",
-        "Document Search Time": 0.0007250308990478516,
-        "Section Search Time": 0.0,
-        "Paragraph Search Time": 0.0031011104583740234,
-        "Search Time": 0.037877559661865234,
+        "Document Search Time": 0.0,
+        "Section Search Time": 0.0025093555450439453,
+        "Paragraph Search Time": 0.0,
+        "Total Retrieval Time": 0.0025093555450439453,
         "Document 1": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.7411)",
         "Document 2": "sample_markdown_style - 2.docx (Similarity: 0.2632)",
         "Document 3": "Rural vs Urban Economic Development in India.docx (Similarity: 0.2543)",
@@ -226,15 +217,14 @@
         "Paragraph 2": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.7488)",
         "Paragraph 2 Text": "#The greatest impact of AI and automation may not be the number of jobs lost or created, but the shift in the kinds of skills that are in demand. Traditional education systems are often not aligned with the skills needed in the digital age.",
         "Paragraph 3": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.6894)",
-        "Paragraph 3 Text": "#However, the scale and speed of AI adoption today raise new questions. Unlike past technologies that replaced physical labor, AI threatens cognitive and creative roles, once considered immune to automation.",
-        "Total Duration": 0.04246640205383301
+        "Paragraph 3 Text": "#However, the scale and speed of AI adoption today raise new questions. Unlike past technologies that replaced physical labor, AI threatens cognitive and creative roles, once considered immune to automation."
     },
     {
         "query": "What role does interdisciplinary collaboration play in advancing AI integration in healthcare systems?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.0008809566497802734,
-        "Paragraph Search Time": 0.0020394325256347656,
-        "Search Time": 0.03175997734069824,
+        "Section Search Time": 0.0019481182098388672,
+        "Paragraph Search Time": 0.0024929046630859375,
+        "Total Retrieval Time": 0.004441022872924805,
         "Document 1": "sample_markdown_style - 2.docx (Similarity: 0.6826)",
         "Document 2": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.3986)",
         "Document 3": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.1812)",
@@ -249,15 +239,14 @@
         "Paragraph 2": "sample_markdown_style - 2.docx (Similarity: 0.6987)",
         "Paragraph 2 Text": "AI has the potential to revolutionize healthcare by improving patient outcomes, optimizing workflows, and reducing costs. However, addressing ethical, technical, and organizational challenges is crucial for its successful integration.",
         "Paragraph 3": "sample_markdown_style - 2.docx (Similarity: 0.6848)",
-        "Paragraph 3 Text": "Collaboration between AI developers, clinicians, and ethicists can address technical and ethical challenges.",
-        "Total Duration": 0.035115957260131836
+        "Paragraph 3 Text": "Collaboration between AI developers, clinicians, and ethicists can address technical and ethical challenges."
     },
     {
         "query": "How does the concept of \"de-dollarization\" within BRICS aim to reduce reliance on the U.S. dollar, and what are its potential implications for global trade?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.001077413558959961,
-        "Paragraph Search Time": 0.0014815330505371094,
-        "Search Time": 0.03151273727416992,
+        "Section Search Time": 0.002943277359008789,
+        "Paragraph Search Time": 0.0020923614501953125,
+        "Total Retrieval Time": 0.0050356388092041016,
         "Document 1": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.5311)",
         "Document 2": "Global Impact of Inflation Post-COVID-19.docx (Similarity: 0.3810)",
         "Document 3": "sample_markdown_style - 5.docx (Similarity: 0.1523)",
@@ -272,15 +261,14 @@
         "Paragraph 2": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.7553)",
         "Paragraph 2 Text": "#De-Dollarization and Currency Cooperation",
         "Paragraph 3": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.5983)",
-        "Paragraph 3 Text": "The Rise of BRICS and Its Economic Influence",
-        "Total Duration": 0.03754281997680664
+        "Paragraph 3 Text": "The Rise of BRICS and Its Economic Influence"
     },
     {
         "query": "What are the socio-economic and environmental benefits of renewable energy adoption, and what barriers hinder its widespread implementation?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.0,
+        "Section Search Time": 0.003664731979370117,
         "Paragraph Search Time": 0.0,
-        "Search Time": 0.03150582313537598,
+        "Total Retrieval Time": 0.003664731979370117,
         "Document 1": "sample_markdown_style - 3.docx (Similarity: 0.7210)",
         "Document 2": "sample_markdown_style - 4.docx (Similarity: 0.3003)",
         "Document 3": "Impact of GST on Indian Businesses.docx (Similarity: 0.2392)",
@@ -295,15 +283,14 @@
         "Paragraph 2": "sample_markdown_style - 3.docx (Similarity: 0.6935)",
         "Paragraph 2 Text": "This document explores the advancements, challenges, and future directions of renewable energy systems in the context of global sustainability. It provides a comprehensive analysis of renewable energy technologies, their integration into existing energy grids, and the socio-economic and environmental implications of their adoption. By synthesizing current research and presenting innovative solutions, this work aims to contribute to the global transition toward sustainable energy systems. The study emphasizes the importance of policy frameworks, technological innovation, and community engagement in overcoming barriers to renewable energy adoption.",
         "Paragraph 3": "sample_markdown_style - 3.docx (Similarity: 0.6468)",
-        "Paragraph 3 Text": "- Limited understanding of the long-term environmental impacts of renewable energy systems",
-        "Total Duration": 0.03403496742248535
+        "Paragraph 3 Text": "- Limited understanding of the long-term environmental impacts of renewable energy systems"
     },
     {
         "query": "How do community-based conservation efforts, such as Locally Managed Marine Areas (LMMAs), contribute to marine ecosystem preservation?",
-        "Document Search Time": 0.00034809112548828125,
-        "Section Search Time": 0.0,
-        "Paragraph Search Time": 0.003054380416870117,
-        "Search Time": 0.0348200798034668,
+        "Document Search Time": 0.0,
+        "Section Search Time": 0.0006206035614013672,
+        "Paragraph Search Time": 0.000518798828125,
+        "Total Retrieval Time": 0.0011394023895263672,
         "Document 1": "sample_markdown_style - 4.docx (Similarity: 0.6571)",
         "Document 2": "sample_markdown_style - 3.docx (Similarity: 0.2659)",
         "Document 3": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.2616)",
@@ -318,15 +305,14 @@
         "Paragraph 2": "sample_markdown_style - 4.docx (Similarity: 0.6300)",
         "Paragraph 2 Text": "Well-designed and managed marine protected areas demonstrate significant conservation benefits, particularly when they include fully protected zones and address critical habitats.",
         "Paragraph 3": "sample_markdown_style - 4.docx (Similarity: 0.6072)",
-        "Paragraph 3 Text": "Locally Managed Marine Areas",
-        "Total Duration": 0.03891181945800781
+        "Paragraph 3 Text": "Locally Managed Marine Areas"
     },
     {
         "query": "What are the key factors that influence the success of culinary innovation while maintaining cultural authenticity?",
-        "Document Search Time": 0.0,
-        "Section Search Time": 0.001026153564453125,
-        "Paragraph Search Time": 0.0,
-        "Search Time": 0.03471803665161133,
+        "Document Search Time": 0.004434108734130859,
+        "Section Search Time": 0.0,
+        "Paragraph Search Time": 0.002013683319091797,
+        "Total Retrieval Time": 0.006447792053222656,
         "Document 1": "sample_markdown_style - 5.docx (Similarity: 0.6861)",
         "Document 2": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.1745)",
         "Document 3": "sample_markdown_style - 3.docx (Similarity: 0.1745)",
@@ -341,15 +327,14 @@
         "Paragraph 2": "sample_markdown_style - 5.docx (Similarity: 0.8273)",
         "Paragraph 2 Text": "Ongoing debates concern the nature of culinary authenticity and its relationship to innovation, adaptation, and cross-cultural exchange.",
         "Paragraph 3": "sample_markdown_style - 5.docx (Similarity: 0.7283)",
-        "Paragraph 3 Text": "This comprehensive investigation has revealed the dynamic interplay between preservation and innovation in global culinary traditions. Traditional food practices represent invaluable repositories of cultural knowledge while continuously evolving through creative adaptation and cross-cultural exchange.",
-        "Total Duration": 0.039582252502441406
+        "Paragraph 3 Text": "This comprehensive investigation has revealed the dynamic interplay between preservation and innovation in global culinary traditions. Traditional food practices represent invaluable repositories of cultural knowledge while continuously evolving through creative adaptation and cross-cultural exchange."
     },
     {
         "query": "How has the introduction of GST impacted logistics and supply chains in India, and what benefits have emerged for businesses?",
-        "Document Search Time": 0.002012014389038086,
-        "Section Search Time": 0.0010132789611816406,
-        "Paragraph Search Time": 0.00212860107421875,
-        "Search Time": 0.02754378318786621,
+        "Document Search Time": 0.0,
+        "Section Search Time": 0.0,
+        "Paragraph Search Time": 0.004470348358154297,
+        "Total Retrieval Time": 0.004470348358154297,
         "Document 1": "Impact of GST on Indian Businesses.docx (Similarity: 0.7635)",
         "Document 2": "Rural vs Urban Economic Development in India.docx (Similarity: 0.3223)",
         "Document 3": "Global Impact of Inflation Post-COVID-19.docx (Similarity: 0.2128)",
@@ -364,15 +349,14 @@
         "Paragraph 2": "Impact of GST on Indian Businesses.docx (Similarity: 0.7969)",
         "Paragraph 2 Text": "Impact of GST on Indian Businesses",
         "Paragraph 3": "Impact of GST on Indian Businesses.docx (Similarity: 0.7443)",
-        "Paragraph 3 Text": "#The success of GST depends on continuous evolution and government support in addressing the operational difficulties faced by businesses. With time, awareness, and the right infrastructure, GST has the potential to make Indian businesses more competitive and globally integrated.",
-        "Total Duration": 0.03788304328918457
+        "Paragraph 3 Text": "#The success of GST depends on continuous evolution and government support in addressing the operational difficulties faced by businesses. With time, awareness, and the right infrastructure, GST has the potential to make Indian businesses more competitive and globally integrated."
     },
     {
         "query": "What are the critical success factors for implementing marine protected areas (MPAs) effectively, and how do they contribute to biodiversity conservation?",
-        "Document Search Time": 0.0009987354278564453,
-        "Section Search Time": 0.0,
-        "Paragraph Search Time": 0.0030553340911865234,
-        "Search Time": 0.03471803665161133,
+        "Document Search Time": 0.0,
+        "Section Search Time": 0.0008890628814697266,
+        "Paragraph Search Time": 0.0,
+        "Total Retrieval Time": 0.0008890628814697266,
         "Document 1": "sample_markdown_style - 4.docx (Similarity: 0.6401)",
         "Document 2": "sample_markdown_style - 3.docx (Similarity: 0.3517)",
         "Document 3": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.2621)",
@@ -387,15 +371,14 @@
         "Paragraph 2": "sample_markdown_style - 4.docx (Similarity: 0.6725)",
         "Paragraph 2 Text": "- Identifying key strategies for effective marine conservation across diverse ecosystems",
         "Paragraph 3": "sample_markdown_style - 4.docx (Similarity: 0.6701)",
-        "Paragraph 3 Text": "Well-designed and managed marine protected areas demonstrate significant conservation benefits, particularly when they include fully protected zones and address critical habitats.",
-        "Total Duration": 0.03938150405883789
+        "Paragraph 3 Text": "Well-designed and managed marine protected areas demonstrate significant conservation benefits, particularly when they include fully protected zones and address critical habitats."
     },
     {
         "query": "How does AI serve as an augmentation tool in industries like healthcare, journalism, and design, rather than replacing human roles entirely?",
-        "Document Search Time": 0.0,
-        "Section Search Time": 0.0017673969268798828,
+        "Document Search Time": 0.0007665157318115234,
+        "Section Search Time": 0.0020079612731933594,
         "Paragraph Search Time": 0.0,
-        "Search Time": 0.0322270393371582,
+        "Total Retrieval Time": 0.002774477005004883,
         "Document 1": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.5729)",
         "Document 2": "sample_markdown_style - 2.docx (Similarity: 0.5470)",
         "Document 3": "sample_markdown_style - 5.docx (Similarity: 0.1509)",
@@ -410,15 +393,14 @@
         "Paragraph 2": "sample_markdown_style - 2.docx (Similarity: 0.6062)",
         "Paragraph 2 Text": "AI has the potential to revolutionize healthcare by improving patient outcomes, optimizing workflows, and reducing costs. However, addressing ethical, technical, and organizational challenges is crucial for its successful integration.",
         "Paragraph 3": "sample_markdown_style - 2.docx (Similarity: 0.5862)",
-        "Paragraph 3 Text": "This section reviews existing research on AI in healthcare, highlighting key findings, gaps, and emerging trends.",
-        "Total Duration": 0.0364077091217041
+        "Paragraph 3 Text": "This section reviews existing research on AI in healthcare, highlighting key findings, gaps, and emerging trends."
     },
     {
         "query": "What are the challenges and opportunities associated with the rise of the gig and remote economy enabled by AI and automation?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.0007073879241943359,
-        "Paragraph Search Time": 0.0004127025604248047,
-        "Search Time": 0.03564739227294922,
+        "Section Search Time": 0.0030374526977539062,
+        "Paragraph Search Time": 0.0010814666748046875,
+        "Total Retrieval Time": 0.004118919372558594,
         "Document 1": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.6432)",
         "Document 2": "sample_markdown_style - 2.docx (Similarity: 0.3109)",
         "Document 3": "sample_markdown_style - 3.docx (Similarity: 0.2895)",
@@ -433,15 +415,14 @@
         "Paragraph 2": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.7046)",
         "Paragraph 2 Text": "#The answer is nuanced and varies across industries, geographies, and skill levels. This document explores the impact of AI and automation on employment, highlighting both the opportunities and the challenges they bring.",
         "Paragraph 3": "AI and Automation_ Job Creator or Job Killer.docx (Similarity: 0.6228)",
-        "Paragraph 3 Text": "#The Rise of the Gig and Remote Economy",
-        "Total Duration": 0.03939199447631836
+        "Paragraph 3 Text": "#The Rise of the Gig and Remote Economy"
     },
     {
         "query": "How do renewable energy systems contribute to reducing greenhouse gas emissions, and what role do policy frameworks play in their adoption?",
         "Document Search Time": 0.0,
-        "Section Search Time": 0.0020101070404052734,
-        "Paragraph Search Time": 0.002010822296142578,
-        "Search Time": 0.030351638793945312,
+        "Section Search Time": 0.0017192363739013672,
+        "Paragraph Search Time": 0.0020532608032226562,
+        "Total Retrieval Time": 0.0037724971771240234,
         "Document 1": "sample_markdown_style - 3.docx (Similarity: 0.6780)",
         "Document 2": "sample_markdown_style - 4.docx (Similarity: 0.2995)",
         "Document 3": "The Rise of BRICS and Its Economic Influence.docx (Similarity: 0.2495)",
@@ -456,7 +437,6 @@
         "Paragraph 2": "sample_markdown_style - 3.docx (Similarity: 0.6665)",
         "Paragraph 2 Text": "Renewable energy systems are essential for achieving a sustainable future. This study highlights the advancements, challenges, and impacts of renewable energy technologies, emphasizing the need for continued innovation and collaboration. By addressing the barriers to adoption, renewable energy can play a pivotal role in mitigating climate change and ensuring energy security for future generations.",
         "Paragraph 3": "sample_markdown_style - 3.docx (Similarity: 0.6521)",
-        "Paragraph 3 Text": "This document explores the advancements, challenges, and future directions of renewable energy systems in the context of global sustainability. It provides a comprehensive analysis of renewable energy technologies, their integration into existing energy grids, and the socio-economic and environmental implications of their adoption. By synthesizing current research and presenting innovative solutions, this work aims to contribute to the global transition toward sustainable energy systems. The study emphasizes the importance of policy frameworks, technological innovation, and community engagement in overcoming barriers to renewable energy adoption.",
-        "Total Duration": 0.03612995147705078
+        "Paragraph 3 Text": "This document explores the advancements, challenges, and future directions of renewable energy systems in the context of global sustainability. It provides a comprehensive analysis of renewable energy technologies, their integration into existing energy grids, and the socio-economic and environmental implications of their adoption. By synthesizing current research and presenting innovative solutions, this work aims to contribute to the global transition toward sustainable energy systems. The study emphasizes the importance of policy frameworks, technological innovation, and community engagement in overcoming barriers to renewable energy adoption."
     }
 ]
