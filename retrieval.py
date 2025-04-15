@@ -2,7 +2,7 @@ import time
 import faiss
 import numpy as np
 
-def progressive_search_cosine(query, indices, embeddings_dict, text_levels, model, top_k=3):
+def progressive_search_cosine(query, indices, embeddings_dict, text_levels, model, data, top_k=3):
     """
     Search through embeddings at multiple levels with progressive filtering using cosine similarity
     """
@@ -32,7 +32,8 @@ def progressive_search_cosine(query, indices, embeddings_dict, text_levels, mode
     
     D, I = indices['document'].search(query_embedding, k=min(top_k, indices['document'].ntotal))
     doc_search_time = time.time() - doc_search_start
-    
+    data["Document Search Time"] = doc_search_time
+
     results['document'] = {
         'indices': I[0].tolist(),
         'similarities': D[0].tolist(),
@@ -84,6 +85,8 @@ def progressive_search_cosine(query, indices, embeddings_dict, text_levels, mode
     }
     
     section_search_time = time.time() - section_search_start
+    data["Section Search Time"] = section_search_time
+
     print(f"\n✓ Section search complete in {section_search_time:.6f}s")
     print(f"  Selected {len(results['section']['indices'])} sections")
     for i, (idx, sim) in enumerate(zip(results['section']['indices'], results['section']['similarities'])):
@@ -131,6 +134,11 @@ def progressive_search_cosine(query, indices, embeddings_dict, text_levels, mode
     }
     
     para_search_time = time.time() - para_search_start
+    data["Paragraph Search Time"] = para_search_time
+
+    total_time = para_search_time + section_search_time + doc_search_time
+    data["Total Retrieval Time"] = total_time
+
     print(f"\n✓ Paragraph search complete in {para_search_time:.6f}s")
     print(f"  Selected {len(results['paragraph']['indices'])} paragraphs")
     for i, (idx, sim) in enumerate(zip(results['paragraph']['indices'], results['paragraph']['similarities'])):
@@ -141,20 +149,19 @@ def progressive_search_cosine(query, indices, embeddings_dict, text_levels, mode
         print(f"  Paragraph {i+1}: from {doc_name} (Similarity: {sim:.4f}) - {para_preview}")
 
     # Performance summary
-    total_time = time.time() - overall_start
-    print(f"\n{'='*50}")
-    print(f"PERFORMANCE SUMMARY - PRISM APPROACH")
-    print(f"{'='*50}")
-    print(f"Total search time: {total_time:.6f}s")
-    print(f"  - Document search: {doc_search_time:.6f}s ({doc_search_time/total_time*100:.1f}%)")
-    print(f"  - Section search: {section_search_time:.6f}s ({section_search_time/total_time*100:.1f}%)")
-    print(f"  - Paragraph search: {para_search_time:.6f}s ({para_search_time/total_time*100:.1f}%)")
-    print(f"Vector comparisons:")
-    print(f"  - Document level: {indices['document'].ntotal} vectors (100% of documents)")
-    print(f"  - Section level: {filtered_section_index.ntotal} vectors ({filtered_section_index.ntotal/len(text_levels['sections'])*100:.1f}% of all sections)")
-    print(f"  - Paragraph level: {filtered_paragraph_index.ntotal} vectors ({filtered_paragraph_index.ntotal/len(text_levels['paragraphs'])*100:.1f}% of all paragraphs)")
-    print(f"Total vector comparisons: {indices['document'].ntotal + filtered_section_index.ntotal + filtered_paragraph_index.ntotal}")
-    print(f"Flat comparison would require: {len(text_levels['paragraphs'])} vector comparisons")
-    print(f"Vector comparison reduction: {(1 - (indices['document'].ntotal + filtered_section_index.ntotal + filtered_paragraph_index.ntotal)/len(text_levels['paragraphs']))*100:.1f}%")
+    # print(f"\n{'='*50}")
+    # print(f"PERFORMANCE SUMMARY - PRISM APPROACH")
+    # print(f"{'='*50}")
+    # print(f"Total search time: {total_time:.6f}s")
+    # print(f"  - Document search: {doc_search_time:.6f}s ({doc_search_time/total_time*100:.1f}%)")
+    # print(f"  - Section search: {section_search_time:.6f}s ({section_search_time/total_time*100:.1f}%)")
+    # print(f"  - Paragraph search: {para_search_time:.6f}s ({para_search_time/total_time*100:.1f}%)")
+    # print(f"Vector comparisons:")
+    # print(f"  - Document level: {indices['document'].ntotal} vectors (100% of documents)")
+    # print(f"  - Section level: {filtered_section_index.ntotal} vectors ({filtered_section_index.ntotal/len(text_levels['sections'])*100:.1f}% of all sections)")
+    # print(f"  - Paragraph level: {filtered_paragraph_index.ntotal} vectors ({filtered_paragraph_index.ntotal/len(text_levels['paragraphs'])*100:.1f}% of all paragraphs)")
+    # print(f"Total vector comparisons: {indices['document'].ntotal + filtered_section_index.ntotal + filtered_paragraph_index.ntotal}")
+    # print(f"Flat comparison would require: {len(text_levels['paragraphs'])} vector comparisons")
+    # print(f"Vector comparison reduction: {(1 - (indices['document'].ntotal + filtered_section_index.ntotal + filtered_paragraph_index.ntotal)/len(text_levels['paragraphs']))*100:.1f}%")
 
     return results
